@@ -6,6 +6,7 @@ exports.up = function(knex) {
         table.string('description').notNullable();
         table.string('address').notNullable();
         table.decimal('value').notNullable();
+        table.date('date').notNullable();
         table.string('ministrie_id').notNullable();
 
         //Criação da chave estrangeira

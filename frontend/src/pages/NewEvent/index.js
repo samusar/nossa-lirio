@@ -3,11 +3,12 @@ import { Link, useHistory } from 'react-router-dom';
 import './styles.css';
 import { FiArrowLeft } from 'react-icons/fi';
 import logoImg from '../../assets/logo.png';
-import api from '../../Services/api';
+import api from '../../Services/api';  
 
 
 export default function NewEvent(){
     const [title, setTitle] = useState('');
+    const [date, setDate] = useState('');
     const [description, setDescription] = useState('');
     const [value, setValue] = useState('');
     const [address, setAddress] = useState('');
@@ -25,8 +26,9 @@ export default function NewEvent(){
             description,
             value,
             address,
+            date,
         };
-
+        
         try {
             await api.post('event', data, {
                 headers: {
@@ -72,6 +74,13 @@ export default function NewEvent(){
                         placeholder="Valor em R$"
                         value={value}
                         onChange={e => setValue(e.target.value)}
+
+                    />
+                    <input
+                        type="date"
+                        placeholder="Data do Evento"
+                        value={date}
+                        onChange={e => setDate(e.target.value)}
 
                     />
                     <input 

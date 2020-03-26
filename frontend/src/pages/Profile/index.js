@@ -3,6 +3,8 @@ import logoImg from '../../assets/logo.png';
 import { Link, useHistory } from 'react-router-dom';
 import {FiPower,FiTrash2 } from 'react-icons/fi';
 import api from '../../Services/api';
+import { parseISO, format } from 'date-fns';
+
 
 import './styles.css';
 
@@ -61,6 +63,9 @@ export default function Profile(){
                     <li key={event.id}>
                         <strong>EVENTO:</strong>
                         <p>{ event.title }</p>
+
+                        <strong>Data:</strong>
+                        <p>{ format(parseISO(event.date),"dd'/'MM'/'yyyy") }</p>
 
                         <strong>DESCRIÇÃO:</strong>
                         <p>{ event.description }</p>

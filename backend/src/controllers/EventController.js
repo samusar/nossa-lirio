@@ -16,9 +16,9 @@ module.exports = {
                 'ministries.email',
                 'ministries.whatsapp',
                 'ministries.leader',
-                
-            ]);
-
+            ])
+            .where('events.date', '>=', '2020-03-25');
+            
 
         // A quantidade total deverá ser indicada no cabeçalho da requisição
         response.header('X-Total-Count', count['count(*)']);
@@ -26,7 +26,7 @@ module.exports = {
         return response.json(events);
     },
     async create (request, response) {
-        const {title, description, address, value} = request.body;
+        const {title, description, address, value, date} = request.body;
         const ministrie_id = request.headers.authorization;
 
         const [id] = await connection('events').insert({
@@ -34,6 +34,7 @@ module.exports = {
             description,
             address,
             value,
+            date,
             ministrie_id,
         });
 
