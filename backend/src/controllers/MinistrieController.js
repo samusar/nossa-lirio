@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const generateUniqueId = require('../util/generateUniqueId');
 const connection = require('../database/connection');
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
         // Buscar o corpo da chamada
         const {name, email, whatsapp, leader, logo} = request.body;
 
-        const id = crypto.randomBytes(4).toString('HEX');
+        const id = generateUniqueId();
 
         await connection('ministries').insert({
             id,
